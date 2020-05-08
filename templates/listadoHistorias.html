@@ -1,0 +1,64 @@
+{% for historia in historias %}
+<div class="row">
+
+    <div class="col-2"></div>
+
+    <div class="col-8">
+
+        <div class="card border-light mb-3" style="margin: 0.2%">
+            <div class="card-header" style="background-color: #f8f9fa">
+                <h5>{{ historia.titulo }}</h5>
+            </div>
+
+            <div class="card-body">
+                <p class="card-text">{{ historia.texto }}</p>
+            </div>
+
+            <div class="card-footer" style="background-color: #f8f9fa">
+                <div class="row">
+
+                    <div class="col">
+                        <p><small class="text-muted">{{ historia.fecha }}</small></p>
+                    </div>
+
+
+                    <div class="col">
+                        <p><small style="color: #007bff">@{{ historia.nombreUsuario }}</small></p>
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="row">
+
+                            <div class="col">
+                                <p><b>{{ meGustas[historia.id] }}</b></p>
+                            </div>
+
+                            <div class="col">
+                                {% if leHaDadoMeGusta[historia.id] == False %}
+                                    <a href="/meGustas/nuevo?idHistoria={{ historia.id }}&usr={{ usr.nickname() }}&paginaRedirigir={{ paginaRedirigir }}" class="card-link"><i style="color: #007bff" class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href="/meGustas/eliminar?idHistoria={{ historia.id }}&usr={{ usr.nickname() }}&paginaRedirigir={{ paginaRedirigir }}" class="card-link"><i style="color: #007bff" class="fa fa-heart" aria-hidden="true"></i></a>
+                                {% endif %}
+
+                                {% if historia.nombreUsuario == usr.nickname() %}
+                                    <a href="/historias/eliminar?idHistoria={{ historia.id }}&paginaRedirigir={{ paginaRedirigir }}" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-2"></div>
+
+</div>
+{% endfor %}

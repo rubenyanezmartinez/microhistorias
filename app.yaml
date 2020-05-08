@@ -1,0 +1,41 @@
+application: microhistorias
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /
+  script: handlers.main.app
+  login: required
+
+- url: /misHistorias
+  script: handlers.misHistorias.app
+  login: required
+
+- url: /historiasQueMeGustan
+  script: handlers.historiasQueMeGustan.app
+  login: required
+
+- url: /historias/nueva
+  script: handlers.historias.nueva.app
+
+- url: /meGustas/nuevo
+  script: handlers.megusta.nuevo.app
+
+- url: /meGustas/eliminar
+  script: handlers.megusta.eliminar.app
+
+- url: /historias/eliminar
+  script: handlers.historias.eliminar.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: "latest"

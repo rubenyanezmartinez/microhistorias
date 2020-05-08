@@ -1,0 +1,61 @@
+<form id="formNuevaHistoria"
+            method="post"
+            action="/historias/nueva"
+            onsubmit="return check()">
+
+    <div class="row">
+
+        <div class="col-2"></div>
+
+        <div class="col-8">
+            <div class="form-group">
+                <input class="form-control" type="text" id="titulo" name="titulo" placeholder="Nueva historia"/>
+            </div>
+        </div>
+
+        <div class="col-2"></div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-2"></div>
+
+        <div class="col-8">
+            <div class="form-group">
+                <textarea class="form-control" id="texto" name="texto" rows="3" placeholder="¿Qué tienes que contar?" maxlength="400"></textarea>
+            </div>
+        </div>
+
+        <div class="col-2"></div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-9"></div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mb-2">Crear</button>
+            </div>
+        </div>
+
+    </div>
+
+    <input style="visibility: hidden" id="nombreUsuario" name="nombreUsuario" value="{{usr.nickname()}}"/>
+
+</form>
+
+<script>
+
+        var check = function () {
+            var titulo = $("#titulo").val();
+            var texto = $("#texto").val();
+
+            return titulo.length > 0 && texto.length > 0;
+        }
+
+</script>
